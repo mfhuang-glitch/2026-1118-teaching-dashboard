@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-TW">
 <head>
- <style>[hidden]{display:none!important}</style>
+<style>[hidden]{display:none!important}</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
@@ -118,6 +118,13 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:
 </style>
 <style>
 /* ---- 切割墊主題 ---- */
+.te-wrap .te-table tr.te-divider td{background:var(--te-c1-soft);color:var(--te-c1);font-weight:700;border-bottom:2px solid var(--te-c1);padding-top:8px;font-family:var(--te-sans)}
+.te-wrap .te-table tr.te-divider.p1 td{color:var(--color-fg-muted);border-bottom-color:var(--te-c2);background:color-mix(in oklab,var(--te-c2) 14%,var(--color-bg))}
+.te-wrap .te-table tbody tr.te-divider:hover td{background:var(--te-c1-soft)}
+.te-wrap .te-pbadge{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;font-size:11px;line-height:17px;border:1px solid currentColor;white-space:nowrap}
+.te-wrap .te-pbadge.p1{color:var(--color-fg-muted)}
+.te-wrap .te-pbadge.p2{color:var(--te-c1)}
+.te-wrap .te-section[hidden]{display:none!important}
 .te-wrap{
   --te-sans:"Noto Sans TC","Microsoft JhengHei","PingFang TC","Heiti TC",var(--font-anthropic-sans),sans-serif;
   --te-num:"Bahnschrift","DIN Alternate","DIN 2014","Roboto Condensed","Noto Sans TC","Microsoft JhengHei","PingFang TC",var(--font-anthropic-sans),sans-serif;
@@ -136,7 +143,11 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:
 }
 .te-wrap .te-hero-title{margin:0;font-size:clamp(28px,5.2vw,50px);font-weight:800;line-height:1.15;letter-spacing:.03em}
 .te-wrap .te-hero-sub{margin:12px 0 0;max-width:40em;font-size:var(--cds-font-size-body);line-height:1.75;color:rgba(242,246,243,.84)}
-.te-wrap .te-ruler{position:relative;min-height:190px;margin-top:clamp(16px,3vw,28px)}
+.te-wrap .te-ruler{position:relative;min-height:260px;margin-top:6px}
+.te-wrap .te-hero-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:clamp(16px,3vw,26px);font-size:var(--cds-font-size-caption);color:rgba(242,246,243,.86)}
+.te-wrap .te-hero-legend i{display:inline-block;width:20px;height:0;vertical-align:middle;margin-right:6px;border-top:3px solid #F6D36B}
+.te-wrap .te-hero-legend i.te-lg-dept{border-top:2px dashed rgba(242,246,243,.75)}
+.te-wrap .te-hero-legend i.te-lg-school{border-top:2px solid #F4A773}
 .te-wrap .te-ruler svg{display:block;width:100%}
 .te-wrap .te-ruler text{font-family:var(--te-num);font-size:12px;fill:rgba(242,246,243,.78)}
 .te-wrap .te-ruler .te-tip{color:var(--color-fg)}
@@ -173,14 +184,14 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:
   <header class="te-hero" id="te-head">
     <h1 class="te-hero-title">教學評量與競賽成果</h1>
     <p class="te-hero-sub">黃孟帆老師，國立臺北科技大學工業設計系，104–114 學年。分數取自成績登錄系統的教學評量，競賽成果取自教學成果簡報與教學網站；PART 1 與 PART 2 分開計算，不合併。</p>
+    <div class="te-hero-legend"><span><i class="te-lg-me"></i>個人課程（加權）</span><span><i class="te-lg-dept"></i>工設系日間部</span><span><i class="te-lg-school"></i>全校</span></div>
     <div class="te-ruler" data-draw="ruler" data-source="sem_summary"></div>
-    <p class="te-ruler-cap">每一格刻度是一個學期。實線是個人課程的加權平均，虛線是工設系日間部平均（107 學年起系統才公布）。</p>
+    <p class="te-ruler-cap">每一格刻度是一個學期，黃線上的數字是該學期個人課程的加權平均。灰白底為舊版問卷（104–106），系所與全校平均自 107 學年起才公布；虛線為 PART 1 與 PART 2 的分界。</p>
   </header>
 
   <nav class="te-tabs" role="tablist" aria-label="分析區段">
     <button class="te-tab" role="tab" id="tab-part1" data-target="part1" aria-selected="true">PART 1｜104–109 學年</button>
     <button class="te-tab" role="tab" id="tab-part2" data-target="part2" aria-selected="false">PART 2｜110–114 學年</button>
-    <button class="te-tab" role="tab" id="tab-full" data-target="full" aria-selected="false">104–114 學年完整趨勢</button>
     <button class="te-tab" role="tab" id="tab-qual" data-target="qual" aria-selected="false">質性回饋（107–114）</button>
     <button class="te-tab" role="tab" id="tab-comp" data-target="comp" aria-selected="false">競賽成果（105–114）</button>
     <button class="te-tab" role="tab" id="tab-review" data-target="review" aria-selected="false">客觀總評與未來建議</button>
@@ -299,14 +310,6 @@ html,body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:
   </section>
 
   <!-- ================= 104–114 完整趨勢 ================= -->
-  <section class="te-section" id="full" role="tabpanel" aria-labelledby="tab-full" hidden>
-    <div class="te-card" id="full-trend-card">
-      <h2 class="te-h2">104–114 學年各學期總分完整趨勢</h2>
-      <p class="te-cap">個人分數依填答數加權；灰底區為舊版問卷（104–106，系統未公布系所與全校平均），虛線為 PART 1／PART 2 分界。</p>
-      <div class="te-legend"><span><i data-draw="swatch" data-i="0"></i>個人課程</span><span><i data-draw="swatch" data-i="1"></i>工設系日間部</span><span><i data-draw="swatch" data-i="2"></i>全校</span></div>
-      <div class="te-chart" data-draw="trend" data-part="ALL" data-source="sem_summary" style="min-height:320px"></div>
-    </div>
-  </section>
   <!-- ================= 質性回饋 ================= -->
   <section class="te-section" id="qual" role="tabpanel" aria-labelledby="tab-qual" hidden>
     <p class="te-lead" id="q-lead">107–114 學年共 <b data-draw="qk" data-p="ALL" data-f="courses" data-source="qual_total" data-field="courses" data-where="part=ALL">—</b> 門課留下 <b data-draw="qk" data-p="ALL" data-f="l_n" data-source="qual_total" data-field="l_n" data-where="part=ALL">—</b> 則學習收穫意見與 <b data-draw="qk" data-p="ALL" data-f="s_n" data-source="qual_total" data-field="s_n" data-where="part=ALL">—</b> 則建議回覆，其中 <b data-draw="qk" data-p="ALL" data-f="none_share" data-source="qual_total" data-field="none_share" data-where="part=ALL">—</b> 的建議回覆為「沒有建議／繼續保持」。</p>
@@ -634,6 +637,9 @@ dash.calc('courses_view', {
 <script>
 // ---------- helpers ----------
 window.teCol = ['var(--te-c1)', 'var(--te-c2)', 'var(--te-c3)'];
+window.tePartOf = (s) => (+String(s).slice(0, 3) <= 109 ? 'P1' : 'P2');
+window.teDivider = (cols, part, label) => { const tr = document.createElement('tr'); tr.className = 'te-divider ' + part.toLowerCase(); const td = document.createElement('td'); td.colSpan = cols; td.textContent = label; tr.appendChild(td); return tr; };
+window.tePartBadge = (part) => { const s = document.createElement('span'); s.className = 'te-pbadge ' + part.toLowerCase(); s.textContent = part === 'P1' ? 'PART 1' : 'PART 2'; return s; };
 window.teState = window.teState || { P1: { sem: '', fam: '' }, P2: { sem: '', fam: '' } };
 window.teTip = (box) => {
   let t = box.querySelector('.te-tip');
@@ -665,7 +671,7 @@ document.querySelectorAll('.te-tab').forEach((b) => b.addEventListener('click', 
 }));
 (function () {
   const h = (location.hash || '').replace('#', '');
-  if (h === 'part1' || h === 'part2' || h === 'full' || h === 'qual' || h === 'comp' || h === 'review') {
+  if (h === 'part1' || h === 'part2' || h === 'qual' || h === 'comp' || h === 'review') {
     document.querySelectorAll('.te-tab').forEach((x) => x.setAttribute('aria-selected', x.dataset.target === h ? 'true' : 'false'));
     document.querySelectorAll('.te-section').forEach((s) => { s.hidden = s.id !== h; });
   }
@@ -969,6 +975,7 @@ dash.draw('qtrend', (el) => {
   const y = d3.scaleLinear([0, Math.ceil((d3.max(ys) || 10) / 10) * 10], [H - m.b, m.t]);
   const xb = x('110-1');
   if (xb !== undefined) {
+    svg.append('rect').attr('x', m.l).attr('y', m.t).attr('width', Math.max(0, xb - x.step() / 2 - m.l)).attr('height', H - m.t - m.b).style('fill', 'var(--te-c2)').style('opacity', 0.12);
     svg.append('line').attr('x1', xb - x.step() / 2).attr('x2', xb - x.step() / 2).attr('y1', m.t).attr('y2', H - m.b).style('stroke', 'var(--cds-chart-reference)').style('stroke-dasharray', '4 3');
     svg.append('text').attr('x', xb - x.step() / 2 - 6).attr('y', m.t + 10).attr('text-anchor', 'end').text('PART 1');
     svg.append('text').attr('x', xb - x.step() / 2 + 6).attr('y', m.t + 10).text('PART 2');
@@ -1009,7 +1016,7 @@ dash.draw('qquotes', (tb) => {
   if (g.status !== 'ok') { tb.replaceChildren(); return; }
   const rows = g.data.filter((r) => !teQState.kind || r.kind === teQState.kind).sort((a, b) => d3.ascending(a.kind === '收穫' ? 0 : 1, b.kind === '收穫' ? 0 : 1) || d3.ascending(a.theme, b.theme) || d3.ascending(a.sem, b.sem));
   tb.replaceChildren(...rows.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.id;
-    [r.kind + '｜' + r.theme, '「' + r.quote + '」', r.sem, r.course].forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.appendChild(td); }); return tr; }));
+    [r.kind + '｜' + r.theme, '「' + r.quote + '」', r.sem, r.course].forEach((v, i) => { const td = document.createElement('td'); td.textContent = v; if (i === 2) td.appendChild(tePartBadge(tePartOf(r.sem))); tr.appendChild(td); }); return tr; }));
 });
 </script>
 
@@ -1140,6 +1147,13 @@ dash.draw('cyear', (el) => {
     .call((a) => { a.select('.domain').remove(); a.selectAll('line').style('stroke', 'var(--cds-chart-grid)'); });
   svg.append('g').attr('transform', `translate(0,${H - m.b})`).call(d3.axisBottom(x))
     .call((a) => { a.select('.domain').style('stroke', 'var(--cds-chart-axis)'); a.selectAll('line').remove(); });
+  if (x('110') !== undefined) {
+    const xb = x('110') - x.step() * x.paddingInner() / 2;
+    svg.append('rect').attr('x', m.l).attr('y', m.t - 4).attr('width', Math.max(0, xb - m.l)).attr('height', H - m.b - m.t + 4).style('fill', 'var(--te-c2)').style('opacity', 0.12);
+    svg.append('line').attr('x1', xb).attr('x2', xb).attr('y1', m.t - 4).attr('y2', H - m.b).style('stroke', 'var(--cds-chart-reference)').style('stroke-dasharray', '4 3');
+    svg.append('text').attr('x', m.l + 6).attr('y', m.t + 8).text('PART 1（105–109）');
+    svg.append('text').attr('x', W - m.r - 2).attr('y', m.t + 8).attr('text-anchor', 'end').text('PART 2（110–114）');
+  }
   rows.forEach((r) => { let acc = 0; [0, 1, 2, 3, 4].forEach((i) => { const v = r['t' + i]; if (!v) return; const s = teTierStyle(i);
     svg.append('rect').attr('x', x(r.year)).attr('width', x.bandwidth()).attr('y', y(acc + v)).attr('height', Math.max(0, y(acc) - y(acc + v) - 1)).style('fill', s.fill).style('opacity', s.op); acc += v; }); });
   svg.append('g').selectAll('text').data(rows).join('text').attr('class', 'te-lbl').attr('x', (r) => x(r.year) + x.bandwidth() / 2).attr('y', (r) => y(r.n) - 6).attr('text-anchor', 'middle').text((r) => r.n);
@@ -1223,8 +1237,12 @@ dash.draw('cmix', (el) => {
 
 dash.draw('cyeartable', (tb) => {
   const g = dash.data('comp_year'); if (g.status !== 'ok' || !g.data) { tb.replaceChildren(); return; }
-  tb.replaceChildren(...g.data.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.year;
-    [r.year, r.n, r.awarded, r.medals, r.intl_all, r.course_avg === null ? '—' : teFmt(r.course_avg)].forEach((v, i) => { const td = document.createElement('td'); if (i) td.className = 'num'; td.textContent = String(v); tr.appendChild(td); }); return tr; }));
+  const out = []; let cur = null;
+  g.data.forEach((r) => { const pt = tePartOf(r.year);
+    if (pt !== cur) { cur = pt; out.push(teDivider(6, pt, pt === 'P1' ? 'PART 1（105–109 學年）' : 'PART 2（110–114 學年）')); }
+    const tr = document.createElement('tr'); tr.dataset.key = r.year;
+    [r.year, r.n, r.awarded, r.medals, r.intl_all, r.course_avg === null ? '—' : teFmt(r.course_avg)].forEach((v, i) => { const td = document.createElement('td'); if (i) td.className = 'num'; td.textContent = String(v); tr.appendChild(td); }); out.push(tr); });
+  tb.replaceChildren(...out);
 });
 dash.draw('cworks', (tb) => {
   const g = dash.data('comp_works'); if (g.status !== 'ok' || !g.data) { tb.replaceChildren(); return; }
@@ -1243,46 +1261,69 @@ dash.draw('clist', (tb) => {
   const g = dash.data('competitions'); if (g.status !== 'ok') { tb.replaceChildren(); return; }
   const rows = g.data.filter((r) => (!teC.year || r.year === teC.year) && (!teC.tier || r.tier === teC.tier) && (!teC.level || r.level === teC.level))
     .sort((a, b) => d3.descending(a.term, b.term) || d3.ascending(teCTiers.indexOf(a.tier), teCTiers.indexOf(b.tier)));
-  tb.replaceChildren(...rows.map((r) => { const tr = document.createElement('tr'); tr.dataset.key = r.id;
-    [r.term, r.item, r.series, r.tier, r.level, r.advising].forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.appendChild(td); }); return tr; }));
+  const out = []; let cur = null;
+  rows.forEach((r) => { const pt = tePartOf(r.year);
+    if (pt !== cur) { cur = pt; out.push(teDivider(6, pt, pt === 'P1' ? 'PART 1（105–109 學年）' : 'PART 2（110–114 學年）')); }
+    const tr = document.createElement('tr'); tr.dataset.key = r.id;
+    [r.term, r.item, r.series, r.tier, r.level, r.advising].forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.appendChild(td); }); out.push(tr); });
+  tb.replaceChildren(...out);
 });
 </script>
 
 <script>
-// ---------- 首頁刻度尺 ----------
+// ---------- 首頁刻度尺（104–114 完整趨勢） ----------
 window.teRulerPlayed = window.teRulerPlayed || false;
 dash.draw('ruler', (el) => {
   const g = dash.data('sem_summary');
   if (g.status !== 'ok' || !g.data || !g.data.length) { el.textContent = g.status === 'error' ? '無法載入' : '—'; return; }
   const rows = g.data.slice().sort((a, b) => d3.ascending(a.sem, b.sem));
   el.replaceChildren();
-  const W = Math.max(280, el.clientWidth), H = 190, m = { t: 14, r: 40, b: 40, l: 30 };
+  const W = Math.max(280, el.clientWidth), H = 260, m = { t: 26, r: 40, b: 40, l: 30 };
   const svg = d3.select(el).append('svg').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
-    .attr('aria-label', '104 到 114 學年各學期個人課程加權平均與工設系平均的刻度圖');
+    .attr('aria-label', '104 到 114 學年各學期個人課程加權平均、工設系日間部平均與全校平均的折線圖');
   const x = d3.scalePoint(rows.map((r) => r.sem), [m.l, W - m.r]).padding(0.5);
   const y = d3.scaleLinear([4.2, 5.0], [H - m.b, m.t]);
-  const base = H - m.b + 8;
+  const step = x.step(), base = H - m.b + 8;
+  const old = rows.filter((r) => r.sem < '107');
+  if (old.length) {
+    const x0 = x(old[0].sem) - step / 2, x1 = x(old[old.length - 1].sem) + step / 2;
+    svg.append('rect').attr('x', x0).attr('y', m.t - 8).attr('width', x1 - x0).attr('height', base - m.t + 8).style('fill', 'rgba(242,246,243,.09)');
+    svg.append('text').attr('x', x0 + 6).attr('y', m.t + 4).text('舊版問卷');
+  }
   [4.4, 4.6, 4.8, 5.0].forEach((v) => {
-    svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(v)).attr('y2', y(v)).style('stroke', 'rgba(242,246,243,.22)');
+    svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', y(v)).attr('y2', y(v)).style('stroke', 'rgba(242,246,243,.2)');
     svg.append('text').attr('x', m.l - 6).attr('y', y(v)).attr('dy', '0.35em').attr('text-anchor', 'end').text(v.toFixed(1));
   });
+  const pb = rows.find((r) => r.part === 'P2');
+  if (pb) {
+    const xb = x(pb.sem) - step / 2;
+    svg.append('line').attr('x1', xb).attr('x2', xb).attr('y1', m.t - 8).attr('y2', base).style('stroke', 'rgba(242,246,243,.55)').style('stroke-dasharray', '3 3');
+    svg.append('text').attr('x', xb - 6).attr('y', m.t + 4).attr('text-anchor', 'end').text('PART 1');
+    svg.append('text').attr('x', xb + 6).attr('y', m.t + 4).text('PART 2');
+  }
   svg.append('line').attr('x1', m.l).attr('x2', W - m.r).attr('y1', base).attr('y2', base).style('stroke', 'rgba(242,246,243,.7)');
-  const step = x.step();
   rows.forEach((r) => {
-    const yearStart = r.sem.endsWith('-1');
-    const xx = yearStart ? x(r.sem) - step / 2 : x(r.sem) - step / 2;
+    const yearStart = r.sem.endsWith('-1'), xx = x(r.sem) - step / 2;
     svg.append('line').attr('x1', xx).attr('x2', xx).attr('y1', base).attr('y2', base + (yearStart ? 12 : 6)).style('stroke', 'rgba(242,246,243,.7)');
     if (yearStart && (step > 16 || +r.sem.slice(0, 3) % 2 === 0)) svg.append('text').attr('x', xx + step).attr('y', base + 24).attr('text-anchor', 'middle').text(r.sem.slice(0, 3));
   });
   const lastX = x(rows[rows.length - 1].sem) + step / 2;
   svg.append('line').attr('x1', lastX).attr('x2', lastX).attr('y1', base).attr('y2', base + 12).style('stroke', 'rgba(242,246,243,.7)');
+  const sLine = d3.line().defined((r) => r.school_avg !== null).x((r) => x(r.sem)).y((r) => y(r.school_avg));
+  svg.append('path').datum(rows).attr('d', sLine).style('fill', 'none').style('stroke', '#F4A773').style('stroke-width', 1.6);
   const dLine = d3.line().defined((r) => r.dept_avg !== null).x((r) => x(r.sem)).y((r) => y(r.dept_avg));
-  svg.append('path').datum(rows).attr('d', dLine).style('fill', 'none').style('stroke', 'rgba(242,246,243,.6)').style('stroke-width', 1.6).style('stroke-dasharray', '5 4');
+  svg.append('path').datum(rows).attr('d', dLine).style('fill', 'none').style('stroke', 'rgba(242,246,243,.7)').style('stroke-width', 1.6).style('stroke-dasharray', '5 4');
   const pLine = d3.line().x((r) => x(r.sem)).y((r) => y(r.avg));
   const path = svg.append('path').datum(rows).attr('d', pLine).style('fill', 'none').style('stroke', '#F6D36B').style('stroke-width', 2.6).style('stroke-linejoin', 'round');
-  svg.append('g').selectAll('circle').data(rows).join('circle').attr('cx', (r) => x(r.sem)).attr('cy', (r) => y(r.avg)).attr('r', 3.2).style('fill', '#F6D36B');
-  const last = rows[rows.length - 1];
-  svg.append('text').attr('x', x(last.sem) + 8).attr('y', y(last.avg)).attr('dy', '0.35em').style('fill', '#F6D36B').style('font-weight', 700).text(teFmt(last.avg));
+  svg.append('g').selectAll('circle').data(rows).join('circle').attr('cx', (r) => x(r.sem)).attr('cy', (r) => y(r.avg)).attr('r', 3.4).style('fill', '#F6D36B');
+  const showAll = step >= 30;
+  rows.forEach((r, i) => {
+    if (!showAll && i !== rows.length - 1 && i % 2 !== 0) return;
+    const prev = rows[i - 1], next = rows[i + 1];
+    const low = prev && r.avg < prev.avg && (!next || r.avg < next.avg);
+    svg.append('text').attr('x', x(r.sem)).attr('y', y(r.avg) + (low ? 15 : -9)).attr('text-anchor', 'middle')
+      .style('fill', '#F6D36B').style('font-weight', 700).style('font-size', showAll ? '12px' : '10px').text(teFmt(r.avg));
+  });
   const motion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
   if (motion && !teRulerPlayed) {
     teRulerPlayed = true;
@@ -1291,7 +1332,8 @@ dash.draw('ruler', (el) => {
   }
   const tip = teTip(el);
   svg.append('g').selectAll('rect').data(rows).join('rect').attr('x', (r) => x(r.sem) - step / 2).attr('y', m.t).attr('width', step).attr('height', H - m.t - m.b).style('fill', 'transparent')
-    .on('pointermove', (ev, r) => tip.show(ev, [r.sem + ' 學期', '個人課程：' + teFmt(r.avg) + '（' + r.courses + ' 門）', '工設系日間部：' + (r.dept_avg === null ? '未公布' : teFmt(r.dept_avg))]))
+    .on('pointermove', (ev, r) => tip.show(ev, [r.sem + ' 學期', '個人課程：' + teFmt(r.avg) + '（' + r.courses + ' 門，' + r.responses + ' 份）',
+      '工設系日間部：' + (r.dept_avg === null ? '未公布' : teFmt(r.dept_avg)), '全校：' + (r.school_avg === null ? '未公布' : teFmt(r.school_avg)), ...(r.gap === null ? [] : ['領先系所：' + teSignFmt(r.gap)])]))
     .on('pointerleave', () => tip.hide());
 });
 </script>
